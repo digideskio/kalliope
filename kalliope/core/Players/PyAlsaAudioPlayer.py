@@ -22,11 +22,13 @@ DEVICE_TYPE_ALL = 'all'
 DEVICE_TYPE_INPUT = 'input'
 DEVICE_TYPE_OUTPUT = 'output'
 
+
 def bits_to_samplefmt(bits):
     if bits in ALSAAUDIO_BIT_MAPPING.keys():
         return ALSAAUDIO_BIT_MAPPING[bits]
     else: 
         raise ValueError('Unsupported format')
+
 
 class PyAlsaAudioPlayer(object):
     """
@@ -57,9 +59,10 @@ class PyAlsaAudioPlayer(object):
         pcm_type = alsaaudio.PCM_PLAYBACK
         stream = alsaaudio.PCM(type=pcm_type,
                                mode=alsaaudio.PCM_NORMAL,
-                               device='sysdefault:CARD=ALSA') #this is just for testing
-                                                                                        #on RPI3 this is fine; pulse (usually also default) is not working
-                                                                                        #device should be configurable; default schould be "default"
+                               device='default')  # this is just for testing
+                               # device='sysdefault:CARD=ALSA')  # this is just for testing
+                                # on RPI3 this is fine; pulse (usually also default) is not working
+                                # device should be configurable; default schould be "default"
         # Set attributes
         stream.setchannels(f.getnchannels())
         stream.setrate(f.getframerate())

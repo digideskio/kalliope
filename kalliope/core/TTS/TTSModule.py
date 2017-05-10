@@ -2,14 +2,13 @@
 import hashlib
 import logging
 import os
-import sys
-import six
 import subprocess
+
+import six
 
 from kalliope.core.ConfigurationManager import SettingLoader
 from kalliope.core.Players import Mplayer
 from kalliope.core.Players.PyAlsaAudioPlayer import PyAlsaAudioPlayer
-from kalliope.core.Players.Pyplayer import Pyplayer
 from kalliope.core.Utils.FileManager import FileManager
 
 logging.basicConfig()
